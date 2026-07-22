@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beyblade X Scorer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>BEYBLADE X SCORER</h1>
+    <p class="subtitle">First to 4 points wins the match</p>
+    <button class="screen-toggle" id="screenToggle" type="button" onclick="toggleScreenAwake()">Keep Screen On</button>
+  </header>
+
+  <main class="arena">
+    <section class="player player-a">
+      <input class="name" id="nameA" value="Player 1" maxlength="16" />
+      <div class="score" id="scoreA">0</div>
+      <div class="buttons">
+        <button class="finish xtreme" onclick="addPoint('A', 3, this)">Xtreme Finish <span>+3</span></button>
+        <button class="finish over" onclick="addPoint('A', 2, this)">Over Finish <span>+2</span></button>
+        <button class="finish burst" onclick="addPoint('A', 2, this)">Burst Finish <span>+2</span></button>
+        <button class="finish spin" onclick="addPoint('A', 1, this)">Spin Finish <span>+1</span></button>
+      </div>
+    </section>
+
+    <div class="center">
+      <div class="vs">VS</div>
+      <div class="log" id="log"></div>
+      <div class="controls">
+        <button class="control" onclick="undo()">Undo</button>
+        <button class="control danger" onclick="resetMatch()">Reset</button>
+      </div>
+    </div>
+
+    <section class="player player-b">
+      <input class="name" id="nameB" value="Player 2" maxlength="16" />
+      <div class="score" id="scoreB">0</div>
+      <div class="buttons">
+        <button class="finish xtreme" onclick="addPoint('B', 3, this)">Xtreme Finish <span>+3</span></button>
+        <button class="finish over" onclick="addPoint('B', 2, this)">Over Finish <span>+2</span></button>
+        <button class="finish burst" onclick="addPoint('B', 2, this)">Burst Finish <span>+2</span></button>
+        <button class="finish spin" onclick="addPoint('B', 1, this)">Spin Finish <span>+1</span></button>
+      </div>
+    </section>
+  </main>
+
+  <div class="overlay" id="overlay" hidden>
+    <div class="banner">
+      <div class="winner" id="winnerText"></div>
+      <div class="final-score" id="finalScore"></div>
+      <button class="control" onclick="newMatch()">New Match</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
