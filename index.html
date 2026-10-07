@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Beyblade X Scorer</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="BBX Scorer" />
+  <meta name="theme-color" content="#1a1a2e" />
+  <link rel="manifest" href="manifest.json" />
 </head>
 <body>
   <header>
@@ -50,6 +58,11 @@
       </div>
     </section>
   </main>
+
+  <div class="ios-hint" id="iosHint" hidden>
+    <span>For true fullscreen: tap <strong>Share</strong> <em>then</em> <strong>Add to Home Screen</strong></span>
+    <button type="button" onclick="dismissIosHint()" aria-label="Dismiss">✕</button>
+  </div>
 
   <div class="overlay" id="overlay" hidden>
     <div class="banner">
