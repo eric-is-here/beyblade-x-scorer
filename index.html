@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Beyblade X Scorer</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -10,7 +10,10 @@
   <header>
     <h1>BEYBLADE X SCORER</h1>
     <p class="subtitle">First to 4 points wins the match</p>
-    <button class="screen-toggle" id="screenToggle" type="button" onclick="toggleScreenAwake()">Keep Screen On</button>
+    <div class="header-buttons">
+      <button class="screen-toggle" id="fullscreenToggle" type="button" onclick="toggleFullscreen()">Fullscreen</button>
+      <button class="screen-toggle" id="screenToggle" type="button" onclick="toggleScreenAwake()">Keep Screen On</button>
+    </div>
   </header>
 
   <main class="arena">

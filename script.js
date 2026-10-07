@@ -4,6 +4,31 @@ let gameOver = false;
 let wakeLock = null;
 let keepScreenAwake = false;
 
+function updateFullscreenButton() {
+  const button = document.getElementById('fullscreenToggle');
+  const active = document.fullscreenElement || document.body.classList.contains('pseudo-fullscreen');
+  button.textContent = active ? 'Exit Fullscreen' : 'Fullscreen';
+  button.classList.toggle('active', active);
+}
+
+function toggleFullscreen() {
+  if (document.fullscreenElement) {
+    document.exitFullscreen();
+  } else if (document.documentElement.requestFullscreen) {
+    document.documentElement.requestFullscreen().catch(() => {
+      // iOS Safari (and non-secure contexts) reject the Fullscreen API —
+      // fall back to a CSS-only immersive mode.
+      document.body.classList.toggle('pseudo-fullscreen');
+      updateFullscreenButton();
+    });
+  } else {
+    document.body.classList.toggle('pseudo-fullscreen');
+    updateFullscreenButton();
+  }
+}
+
+document.addEventListener('fullscreenchange', updateFullscreenButton);
+
 async function toggleScreenAwake() {
   const button = document.getElementById('screenToggle');
 
@@ -112,10 +137,8 @@ function resetMatch() {
 }
 
 function showWinner(name, player) {
-  const opponent = player === 'A' ? 'B' : 'A';
-
   document.getElementById('winnerText').textContent = name + ' WINS!';
-  document.getElementById('finalScore').textContent = getScore(player) + ' — ' + getScore(opponent);
+  document.getElementById('finalScore').textContent = getScore('A') + ' — ' + getScore('B');
   document.getElementById('overlay').hidden = false;
 }
 
