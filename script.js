@@ -37,6 +37,24 @@ function toggleFullscreen() {
 
 document.addEventListener('fullscreenchange', updateFullscreenButton);
 
+// --- Kill double-tap zoom (iOS Safari) ------------------------------------
+// touch-action on body handles most of it; this catches the rest by
+// preventing the default action of a second tap within 300ms. Buttons
+// still work: click events fire before this can interfere.
+let lastTouchEnd = 0;
+document.addEventListener('touchend', (event) => {
+  const now = Date.now();
+  if (now - lastTouchEnd <= 300) {
+    event.preventDefault();
+  }
+  lastTouchEnd = now;
+}, { passive: false });
+
+// Block pinch gestures at the gesture level too (another iOS path)
+document.addEventListener('gesturestart', (event) => event.preventDefault());
+document.addEventListener('gesturechange', (event) => event.preventDefault());
+document.addEventListener('gestureend', (event) => event.preventDefault());
+
 async function toggleScreenAwake() {
   const button = document.getElementById('screenToggle');
 

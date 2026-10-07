@@ -9,8 +9,9 @@ html {
 }
 
 /* Block pinch-zoom and double-tap zoom on iOS, which ignores the
-   user-scalable=no viewport meta. */
-html {
+   user-scalable=no viewport meta. Must live on body: iOS treats html
+   as always scrollable and skips its touch-action. */
+body {
   touch-action: pan-x pan-y;
   overscroll-behavior: none;
 }
