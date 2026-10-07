@@ -331,50 +331,6 @@ header h1 {
   display: none;
 }
 
-.ios-hint[hidden] {
-  display: none;
-}
-
-.ios-hint {
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: calc(env(safe-area-inset-bottom) + 12px);
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  max-width: calc(100vw - 2rem);
-  padding: 0.75rem 1rem;
-  background: rgba(26, 26, 46, 0.95);
-  border: 1px solid rgba(255, 217, 61, 0.5);
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-  font-size: 0.85rem;
-  color: #d5dbe8;
-  z-index: 90;
-}
-
-.ios-hint strong {
-  color: #ffd93d;
-}
-
-.ios-hint em {
-  font-style: normal;
-  color: #8892b0;
-}
-
-.ios-hint button {
-  flex-shrink: 0;
-  width: 30px;
-  height: 30px;
-  border: none;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
-  color: #fff;
-  font-size: 0.9rem;
-  cursor: pointer;
-}
-
 .overlay {
   position: fixed;
   inset: 0;

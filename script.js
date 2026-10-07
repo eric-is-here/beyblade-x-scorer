@@ -29,31 +29,6 @@ function toggleFullscreen() {
 
 document.addEventListener('fullscreenchange', updateFullscreenButton);
 
-// --- iOS "Add to Home Screen" hint ---------------------------------------
-// iOS Safari can't force fullscreen; installed home-screen web apps can.
-function isIosSafari() {
-  const ua = navigator.userAgent;
-  const isIOS = /iPad|iPhone|iPod/.test(ua)
-    || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-  const isHomeScreen = navigator.standalone === true
-    || window.matchMedia('(display-mode: standalone)').matches;
-  return isIOS && !isHomeScreen
-    && !/CriOS|FxiOS|EdgiOS|OPiOS/.test(ua); // third-party iOS browsers can't install PWAs
-}
-
-function showIosHintIfNeeded() {
-  if (!isIosSafari()) return;
-  if (localStorage.getItem('bbx-ios-hint-dismissed')) return;
-  document.getElementById('iosHint').hidden = false;
-}
-
-function dismissIosHint() {
-  document.getElementById('iosHint').hidden = true;
-  localStorage.setItem('bbx-ios-hint-dismissed', '1');
-}
-
-document.addEventListener('DOMContentLoaded', showIosHintIfNeeded);
-
 async function toggleScreenAwake() {
   const button = document.getElementById('screenToggle');
 
