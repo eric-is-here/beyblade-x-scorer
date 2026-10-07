@@ -8,6 +8,13 @@ html {
   height: 100%;
 }
 
+/* Block pinch-zoom and double-tap zoom on iOS, which ignores the
+   user-scalable=no viewport meta. */
+html {
+  touch-action: pan-x pan-y;
+  overscroll-behavior: none;
+}
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
@@ -127,7 +134,8 @@ header h1 {
   background: transparent;
   border: none;
   color: #fff;
-  font-size: clamp(0.95rem, 2.5vh, 1.3rem);
+  /* 16px minimum: iOS Safari auto-zooms into inputs with smaller fonts */
+  font-size: 16px;
   font-weight: 600;
   text-align: center;
   padding: 0.25rem;
@@ -596,7 +604,8 @@ header h1 {
   }
 
   .name {
-    font-size: 0.85rem;
+    /* keep 16px: smaller fonts trigger iOS auto-zoom on tap */
+    font-size: 16px;
     padding: 0;
     margin-bottom: 0;
   }
