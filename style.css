@@ -436,10 +436,7 @@ header h1 {
   animation: buttonFlash 0.2s ease;
 }
 
-/* Phone layout: any touch device OR narrow viewport. Using pointer:coarse
-   catches phones whose Safari reports a wide CSS viewport (display zoom),
-   which max-width alone misses. */
-@media (pointer: coarse), (max-width: 768px) {
+@media (max-width: 768px) {
   header {
     padding: 0.35rem 0.5rem 0.15rem;
   }
@@ -523,25 +520,19 @@ header h1 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.4rem;
-    flex: 1;
-    align-content: stretch;
   }
 
-  /* Box-shaped finish buttons, comfortably tappable (Apple's 44px+ guideline) */
+  /* Keep every finish button comfortably tappable (Apple's 44px guideline) */
   .finish {
     flex-direction: column;
-    gap: 0.15rem;
-    padding: 0.6rem 0.25rem;
+    gap: 0.1rem;
+    padding: 0.55rem 0.25rem;
     text-align: center;
-    border-radius: 12px;
-    min-height: 52px;
-    justify-content: center;
-    font-size: 0.8rem;
+    min-height: 48px;
   }
 
   .finish span {
-    padding: 0.1rem 0.5rem;
-    font-size: 0.75rem;
+    padding: 0 0.5rem;
   }
 
   .marks {
