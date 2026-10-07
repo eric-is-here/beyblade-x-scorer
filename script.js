@@ -1,8 +1,16 @@
 const WINNING_SCORE = 4;
 let history = [];
 let gameOver = false;
+let freeMarks = false;
 let wakeLock = null;
 let keepScreenAwake = false;
+
+function toggleFreeMarks() {
+  freeMarks = !freeMarks;
+  const button = document.getElementById('freeMarksToggle');
+  button.textContent = freeMarks ? 'Free Marks On' : 'Free Marks';
+  button.classList.toggle('active', freeMarks);
+}
 
 function updateFullscreenButton() {
   const button = document.getElementById('fullscreenToggle');
@@ -139,7 +147,7 @@ function addPoint(player, points, btn) {
   addLog(playerName + ': +' + points + ' (' + getFinishName(btn) + ')');
   renderMarks(player);
 
-  if (newScore >= WINNING_SCORE) {
+  if (!freeMarks && newScore >= WINNING_SCORE) {
     gameOver = true;
     showWinner(playerName, player);
   }
