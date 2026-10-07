@@ -600,6 +600,43 @@ header h1 {
     padding: 0;
     margin-bottom: 0;
   }
+
+  /* Landscape widths skip the portrait phone query — force the 2x2
+     box grid here so buttons never render as 4 full-width bars */
+  .buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.3rem;
+    flex: 1;
+    align-content: stretch;
+  }
+
+  .finish {
+    flex-direction: column;
+    gap: 0.1rem;
+    padding: 0.35rem 0.25rem;
+    text-align: center;
+    justify-content: center;
+    border-radius: 10px;
+    min-height: 44px;
+    font-size: 0.75rem;
+  }
+
+  .finish span {
+    padding: 0.05rem 0.4rem;
+    font-size: 0.7rem;
+  }
+
+  .marks {
+    gap: 0.15rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .mark {
+    width: 1rem;
+    height: 1rem;
+    font-size: 0.45rem;
+  }
 }
 
 /* Fullscreen (real API or iOS fallback class): reclaim header space */
