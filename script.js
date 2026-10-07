@@ -86,6 +86,32 @@ function setScore(player, value) {
   el.classList.add('score-pop');
 }
 
+const MARK_LABELS = { xtreme: 'X3', over: 'O2', burst: 'B2', spin: 'S1' };
+
+function renderMarks(player) {
+  const strip = document.getElementById('marks' + player);
+  strip.innerHTML = '';
+
+  history
+    .filter((entry) => entry.player === player)
+    .forEach((entry) => {
+      const mark = document.createElement('span');
+      mark.className = 'mark ' + entry.type;
+      mark.textContent = MARK_LABELS[entry.type];
+      strip.appendChild(mark);
+    });
+}
+
+function renderAllMarks() {
+  renderMarks('A');
+  renderMarks('B');
+}
+
+function getFinishType(btn) {
+  const types = ['xtreme', 'over', 'burst', 'spin'];
+  return types.find((type) => btn.classList.contains(type)) || 'spin';
+}
+
 function getFinishName(button) {
   return button.childNodes[0].textContent.trim();
 }
@@ -109,8 +135,9 @@ function addPoint(player, points, btn) {
   setScore(player, newScore);
 
   const playerName = document.getElementById('name' + player).value || 'Player ' + player;
-  history.push({ player, points, prevScore: currentScore });
+  history.push({ player, points, type: getFinishType(btn), prevScore: currentScore });
   addLog(playerName + ': +' + points + ' (' + getFinishName(btn) + ')');
+  renderMarks(player);
 
   if (newScore >= WINNING_SCORE) {
     gameOver = true;
@@ -123,6 +150,7 @@ function undo() {
 
   const last = history.pop();
   setScore(last.player, last.prevScore);
+  renderAllMarks();
 
   const log = document.getElementById('log');
   if (log.firstChild) log.removeChild(log.firstChild);
@@ -134,11 +162,45 @@ function resetMatch() {
   history = [];
   gameOver = false;
   document.getElementById('log').innerHTML = '';
+  renderAllMarks();
+}
+
+function renderFinalMarks() {
+  const container = document.getElementById('finalMarks');
+  container.innerHTML = '';
+
+  ['A', 'B'].forEach((player) => {
+    const row = document.createElement('div');
+    row.className = 'row';
+
+    const label = document.createElement('span');
+    label.className = 'player-label';
+    label.textContent = document.getElementById('name' + player).value || 'Player ' + player;
+    row.appendChild(label);
+
+    const marks = history.filter((entry) => entry.player === player);
+    if (marks.length === 0) {
+      const empty = document.createElement('span');
+      empty.className = 'empty';
+      empty.textContent = 'no marks';
+      row.appendChild(empty);
+    } else {
+      marks.forEach((entry) => {
+        const mark = document.createElement('span');
+        mark.className = 'mark ' + entry.type;
+        mark.textContent = MARK_LABELS[entry.type];
+        row.appendChild(mark);
+      });
+    }
+
+    container.appendChild(row);
+  });
 }
 
 function showWinner(name, player) {
   document.getElementById('winnerText').textContent = name + ' WINS!';
   document.getElementById('finalScore').textContent = getScore('A') + ' — ' + getScore('B');
+  renderFinalMarks();
   document.getElementById('overlay').hidden = false;
 }
 

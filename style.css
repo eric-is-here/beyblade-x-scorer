@@ -143,6 +143,40 @@ header h1 {
   color: #4ecdc4;
 }
 
+.marks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem;
+  min-height: 1.1em;
+  margin-bottom: clamp(0.25rem, 1vh, 0.75rem);
+  flex-shrink: 0;
+}
+
+.marks:empty {
+  margin-bottom: 0;
+}
+
+.mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(1.1rem, 2.6vh, 1.6rem);
+  height: clamp(1.1rem, 2.6vh, 1.6rem);
+  border-radius: 50%;
+  color: #fff;
+  font-size: clamp(0.5rem, 1.4vh, 0.75rem);
+  font-weight: 700;
+  line-height: 1;
+  animation: markPop 0.25s ease;
+}
+
+@keyframes markPop {
+  0% { transform: scale(0); }
+  70% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
 .buttons {
   display: flex;
   flex-direction: column;
@@ -193,6 +227,22 @@ header h1 {
 }
 
 .spin {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+.mark.xtreme {
+  background: linear-gradient(135deg, #ff0000, #ff4444);
+}
+
+.mark.over {
+  background: linear-gradient(135deg, #ff8c00, #ffa500);
+}
+
+.mark.burst {
+  background: linear-gradient(135deg, #9b59b6, #8e44ad);
+}
+
+.mark.spin {
   background: linear-gradient(135deg, #3498db, #2980b9);
 }
 
@@ -296,7 +346,44 @@ header h1 {
   font-size: 4rem;
   font-weight: 700;
   line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.final-marks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
   margin-bottom: 2rem;
+}
+
+.final-marks .row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.final-marks .row .player-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #8892b0;
+  max-width: 7em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.final-marks .row .mark {
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 0.7rem;
+}
+
+.final-marks .row .empty {
+  font-size: 0.9rem;
+  color: #555f7a;
+  font-style: italic;
 }
 
 .banner .control {
@@ -399,6 +486,11 @@ header h1 {
     padding: 0 0.5rem;
   }
 
+  .marks {
+    gap: 0.2rem;
+    margin-bottom: 0.4rem;
+  }
+
   .banner {
     padding: 1.5rem 2rem;
     max-width: 92vw;
@@ -410,7 +502,22 @@ header h1 {
 
   .final-score {
     font-size: 2.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .final-marks {
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .final-marks .row .player-label {
+    font-size: 0.85rem;
+  }
+
+  .final-marks .row .mark {
+    width: 1.2rem;
+    height: 1.2rem;
+    font-size: 0.6rem;
   }
 
   .banner .control {
