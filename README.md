@@ -4,8 +4,6 @@
 
 **立即使用：** [bbx.ericishere.qzz.io](https://bbx.ericishere.qzz.io/)
 
-![手機版計分畫面](docs/screenshot-phone.png)
-
 ## 📱 功能
 
 - **一鍵計分** — 點擊對應的勝利方式即加分：
@@ -30,15 +28,9 @@
 4. 先得 4 分者勝，畫面會顯示勝利結果與雙方得分紀錄
 5. 按「New Match」開始下一場
 
-![勝利畫面](docs/screenshot-winner.png)
-
 ### 💡 iPhone 小提示
 
 iPhone 的 Safari 不允許網頁強制全螢幕。想要真正的全螢幕體驗，請在 Safari 點「分享 → 加入主畫面」，之後從主畫面圖示開啟即可全螢幕使用，「保持螢幕恆亮」功能也需要以此方式才能使用。
-
-## 🖥️ 電腦版
-
-![電腦版畫面](docs/screenshot-desktop.png)
 
 ## 🔧 技術
 
