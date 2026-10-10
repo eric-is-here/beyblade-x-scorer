@@ -1,4 +1,4 @@
-const WINNING_SCORE = 4;
+const DEFAULT_WINNING_SCORE = 4;
 let history = [];
 let gameOver = false;
 let freeMarks = false;
@@ -8,8 +8,29 @@ let keepScreenAwake = false;
 function toggleFreeMarks() {
   freeMarks = !freeMarks;
   const button = document.getElementById('freeMarksToggle');
+  const winningScoreInput = document.getElementById('winningScore');
   button.textContent = freeMarks ? 'Free Marks On' : 'Free Marks';
   button.classList.toggle('active', freeMarks);
+  winningScoreInput.hidden = !freeMarks;
+}
+
+const winningScoreInput = document.getElementById('winningScore');
+
+winningScoreInput.addEventListener('keydown', (event) => {
+  if (event.key.length === 1 && !/^[0-9]$/.test(event.key)) {
+    event.preventDefault();
+  }
+});
+
+winningScoreInput.addEventListener('input', () => {
+  winningScoreInput.value = winningScoreInput.value.replace(/\D/g, '');
+});
+
+function getWinningScore() {
+  if (!freeMarks) return DEFAULT_WINNING_SCORE;
+
+  const value = Number(winningScoreInput.value);
+  return Number.isInteger(value) && value > 0 ? value : null;
 }
 
 function updateFullscreenButton() {
@@ -165,7 +186,9 @@ function addPoint(player, points, btn) {
   addLog(playerName + ': +' + points + ' (' + getFinishName(btn) + ')');
   renderMarks(player);
 
-  if (!freeMarks && newScore >= WINNING_SCORE) {
+  const winningScore = getWinningScore();
+
+  if (winningScore !== null && newScore >= winningScore) {
     gameOver = true;
     showWinner(playerName, player);
   }

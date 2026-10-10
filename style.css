@@ -97,6 +97,25 @@ header h1 {
   opacity: 0.6;
 }
 
+.winning-score {
+  width: 5rem;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  /* keep 16px: smaller fonts trigger iOS auto-zoom on tap */
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  outline: none;
+}
+
+.winning-score:focus {
+  border-color: #ffd93d;
+  background: rgba(255, 255, 255, 0.14);
+}
+
 .arena {
   display: flex;
   justify-content: center;

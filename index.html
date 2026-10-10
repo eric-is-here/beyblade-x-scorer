@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>Beyblade X Scorer</title>
-  <link rel="stylesheet" href="style.css?v=12" />
+  <link rel="stylesheet" href="style.css?v=13" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -22,6 +22,7 @@
       <button class="screen-toggle" id="fullscreenToggle" type="button" onclick="toggleFullscreen()">Fullscreen</button>
       <button class="screen-toggle" id="screenToggle" type="button" onclick="toggleScreenAwake()">Keep Screen On</button>
       <button class="screen-toggle" id="freeMarksToggle" type="button" onclick="toggleFreeMarks()">Free Marks</button>
+      <input class="winning-score" id="winningScore" type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" placeholder="∞" aria-label="Winning score" hidden />
     </div>
   </header>
 
@@ -69,6 +70,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=12"></script>
+  <script src="script.js?v=13"></script>
 </body>
 </html>

@@ -13,7 +13,7 @@
   - 🔵 Spin Finish（旋轉終結）+1
 - **先得 4 分獲勝** — 達到 4 分自動彈出勝利畫面，顯示最終比分
 - **得分紀錄** — 每位玩家分數下方顯示彩色徽章（X3 / O2 / B2 / S1），勝利畫面也會完整顯示雙方紀錄
-- **自由計分模式** — 開啟後不限分數、不觸發勝利畫面，適合自訂規則的對戰
+- **自由計分模式** — 開啟後可輸入整數獲勝分數；留空或輸入 0 表示無上限，持續記錄分數
 - **復原 / 重設** — 誤按可以復原，也能隨時重設整場比賽
 - **全螢幕模式** — 一鍵隱藏瀏覽器工具列（Android 及電腦完整支援）
 - **保持螢幕恆亮** — 比賽期間螢幕不休眠
@@ -57,7 +57,7 @@ MIT License
   - 🔵 Spin Finish +1
 - **First to 4 wins** — the victory screen appears automatically at 4 points, showing the final score
 - **Mark history** — color-coded badges (X3 / O2 / B2 / S1) under each player's score; the result screen shows both players' full history
-- **Free Marks mode** — unlimited scoring with no winner screen, for custom-rule matches
+- **Free Marks mode** — set any whole-number winning score; leave it empty or enter 0 for unlimited scoring with no winner screen
 - **Undo / Reset** — fix mis-taps or restart the match at any time
 - **Fullscreen mode** — hide the browser chrome with one tap (fully supported on Android and desktop)
 - **Keep screen awake** — the screen won't sleep during a match
